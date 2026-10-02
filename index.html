@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Walz — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Engineering portfolio of Matthew Walz, mechanical engineering student at Colorado School of Mines: lunar regolith testbed, high-power rocketry, and a tourniquet feedback device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3F4F1;
+    --ink: #18222F;
+    --navy: #21314D;
+    --stone: #6F6B63;
+    --amber: #C9822A;
+    --rule: #D5D8D2;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--navy); text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Header */
+  header.top { padding: 4.5rem 0 2.5rem; }
+  .name {
+    font-family: var(--display); font-stretch: 125%; font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 0.95; letter-spacing: -0.02em;
+    margin: 0; color: var(--navy);
+  }
+  .tagline {
+    font-family: var(--display); font-stretch: 100%; font-weight: 500;
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem); margin: 1.1rem 0 0; max-width: 46ch; color: var(--ink);
+  }
+  .contact { margin: 1.4rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; font-family: var(--display); font-size: 0.98rem; }
+  .contact a { font-weight: 600; }
+  .contact .pdf { color: var(--ink); background: var(--amber); padding: 0.35rem 0.8rem; border-radius: 3px; text-decoration: none; }
+  .contact .pdf:hover { background: #B67322; }
+
+  /* Filmstrip */
+  .strip { display: grid; grid-template-columns: 1.35fr 0.8fr 0.85fr; gap: 0.75rem; margin: 2.8rem 0 0; }
+  .strip a { text-decoration: none; color: var(--ink); display: block; }
+  .strip figure { margin: 0; }
+  .strip .frame { height: clamp(240px, 32vw, 400px); overflow: hidden; background: #E4E6E1; }
+  .strip .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .strip .frame.cad { background: #E9E9E9; }
+  .strip .frame.cad img { object-fit: contain; }
+  .strip figcaption { font-family: var(--display); font-weight: 650; font-size: 1rem; margin-top: 0.6rem; line-height: 1.25; }
+  .strip figcaption span { display: block; font-weight: 400; color: var(--stone); font-size: 0.9rem; margin-top: 0.15rem; }
+  .strip a:hover figcaption { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+
+  .facts { margin: 2.6rem 0 0; padding: 1.2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+           display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem 2rem; font-size: 0.98rem; }
+  .facts b { font-family: var(--display); font-weight: 650; display: block; color: var(--navy); }
+
+  /* Projects */
+  section.project { padding: 5rem 0 1rem; }
+  .p-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.4rem 2rem; }
+  .p-head h2 {
+    font-family: var(--display); font-stretch: 112%; font-weight: 750; font-size: clamp(1.9rem, 4vw, 2.9rem);
+    line-height: 1.05; margin: 0; color: var(--navy); letter-spacing: -0.01em;
+  }
+  .p-head p { margin: 0; font-family: var(--display); color: var(--stone); font-size: 1rem; }
+  .p-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 2.5rem; margin-top: 2rem; align-items: start; }
+  .p-text p { margin: 0 0 1rem; max-width: 60ch; }
+  dl.stats { margin: 1.6rem 0 0; display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+  dl.stats div { border-left: 3px solid var(--amber); padding-left: 0.85rem; }
+  dl.stats dt { font-family: var(--display); font-size: 0.9rem; color: var(--stone); }
+  dl.stats dd { margin: 0.1rem 0 0; font-family: var(--display); font-weight: 650; font-size: 1.15rem; color: var(--ink); line-height: 1.3; }
+  figure.shot { margin: 0; }
+  figure.shot img { background: #fff; }
+  figure.shot figcaption, .finding figcaption { font-size: 0.9rem; color: var(--stone); margin-top: 0.5rem; }
+
+  .finding { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+  .finding h3 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; margin: 0 0 0.6rem; color: var(--ink); }
+  .finding > p { max-width: 68ch; margin: 0 0 1.6rem; }
+  .finding .pair { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: center; }
+  .finding figure { margin: 0; }
+  .finding img { background: #fff; padding: 0.5rem; }
+
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .trio img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .nose { margin-top: 0.8rem; }
+
+  .tq-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; align-items: stretch; }
+  .tq-grid img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #fff; }
+  .tq-grid img.drawing { object-fit: contain; }
+
+  footer { margin-top: 5rem; padding: 2.5rem 0 3.5rem; border-top: 1px solid var(--rule); font-family: var(--display); }
+  footer p { margin: 0.3rem 0; }
+
+  @media (max-width: 820px) {
+    header.top { padding-top: 3rem; }
+    .strip { grid-template-columns: 1fr 1fr; }
+    .strip a:first-child { grid-column: 1 / -1; }
+    .strip .frame { height: 220px; }
+    .p-grid, .finding .pair { grid-template-columns: 1fr; gap: 1.5rem; }
+    section.project { padding-top: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <h1 class="name">Matthew Walz</h1>
+  <p class="tagline">Mechanical engineering student at Colorado School of Mines. I design, analyze and build hardware that has to work the first time.</p>
+  <p class="contact">
+    <a href="mailto:mattjwalz@outlook.com">mattjwalz@outlook.com</a>
+    <a href="https://www.linkedin.com/in/matthew-j-walz">LinkedIn</a>
+    <a class="pdf" href="Matthew_Walz_Portfolio.pdf" download>Download PDF portfolio</a>
+  </p>
+
+  <nav class="strip" aria-label="Projects">
+    <a href="#testbed">
+      <figure>
+        <div class="frame cad"><img src="images/testbed-cad.jpg" alt="SolidWorks model of the regolith testbed: aluminum gantry over a square bin on a wooden base"></div>
+        <figcaption>Lunar regolith testbed<span>RoSE Lab, 2026</span></figcaption>
+      </figure>
+    </a>
+    <a href="#rocket">
+      <figure>
+        <div class="frame"><img src="images/rocket-pad.jpg" alt="Red-nosed rocket on the launch rail at pad 2"></div>
+        <figcaption>Level 1 high-power rocket<span>Rocket Club, 2026</span></figcaption>
+      </figure>
+    </a>
+    <a href="#tourniquet">
+      <figure>
+        <div class="frame"><img src="images/tourniquet-enclosure.jpg" alt="Blue 3D-printed tourniquet feedback enclosure with timer display"></div>
+        <figcaption>Tourniquet feedback device<span>Red Rocks CC, 2025</span></figcaption>
+      </figure>
+    </a>
+  </nav>
+
+  <div class="facts">
+    <p><b>Education</b>B.S. Mechanical Engineering, Colorado School of Mines, May 2028. GPA 3.9.</p>
+    <p><b>Design and analysis</b>SolidWorks and simulation, Python, C++, LabVIEW, EES, Mathcad Prime, OpenRocket.</p>
+    <p><b>Fabrication</b>Bambu 3D printing, Epilog laser cutting, machine shop, hand tools, sensor integration.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="project" id="testbed" aria-labelledby="testbed-h">
+    <div class="p-head">
+      <h2 id="testbed-h">Lunar regolith testbed</h2>
+      <p>RoSE Lab, Bevameter project · Subsystem lead · Aug 2026 to present</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-text">
+        <p>A 60 cm benchtop bin that holds compacted lunar soil simulant while a bevameter drives test plates into it. I own the design, analysis, fabrication, test procedures and assembly, and presented the design at the team's Critical Design Review.</p>
+        <dl class="stats">
+          <div><dt>Bounding load on the frame</dt><dd>18 kN</dd></div>
+          <div><dt>Wall materials within the 2 mm deflection limit</dt><dd>0 of 7, then 7 of 7 with my top rim</dd></div>
+          <div><dt>Selected build</dt><dd>6061 aluminum walls, acrylic viewing window, aluminum T-slot frame</dd></div>
+        </dl>
+      </div>
+      <figure class="shot">
+        <img src="images/testbed-cad.jpg" alt="SolidWorks model of the testbed with aluminum T-slot gantry, top rim, corner braces and transport base">
+        <figcaption>SolidWorks model: gantry, bin with top rim, corner braces and transport base.</figcaption>
+      </figure>
+    </div>
+
+    <div class="finding">
+      <h3>The key finding: an open-top bin needs a stiff rim</h3>
+      <p>I modeled the compacted soil's pressure on the walls and sized each wall as a flat plate. With the top edge free, every candidate material bowed past the limit. A 2 × 2 × ¼ in aluminum tube rim braces that edge and brings all seven under it, even with the test plate driven 5 mm from a wall.</p>
+      <div class="pair">
+        <figure>
+          <img src="images/wall-deflection-chart.png" alt="Bar chart: without a brace all seven materials deflect 3.2 to 4.7 mm; with the top rim all stay between 1.2 and 2.0 mm, under the 2 mm limit">
+          <figcaption>Peak wall deflection by material, without and with the top rim.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/wall-deflection-map.png" alt="Deflection maps of a 1 inch acrylic wall: 4.56 mm peak at the free top edge with no brace, 1.63 mm with the top rim">
+          <figcaption>1 in acrylic wall: 4.56 mm peak unbraced, 1.63 mm with the rim.</figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:1.6rem">The work behind it: a soil-stress and earth-pressure model, a load path through the actuator, mounts and fasteners including the off-center plate case, plate-bending sizing of seven materials, and weighted decision matrices for walls, frame and compaction. All of it is documented in a Python notebook the team uses as its reference.</p>
+    </div>
+  </section>
+
+  <section class="project" id="rocket" aria-labelledby="rocket-h">
+    <div class="p-head">
+      <h2 id="rocket-h">Level 1 high-power rocket</h2>
+      <p>Mines Rocket Club · Designer and builder · Spring 2026</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-text">
+        <p>I designed the rocket in OpenRocket, modeled and 3D-printed its nose cone, laser-cut the fins and built the full vehicle on a tight launch timeline. It flew on an AeroTech H motor with a clean parachute recovery and earned my Tripoli Level 1 high-power certification.</p>
+        <dl class="stats">
+          <div><dt>Vehicle</dt><dd>83 mm diameter, about 1 m tall, 38 mm motor mount</dd></div>
+          <div><dt>Simulated flight, AeroTech H219T</dt><dd>649 m (2,128 ft) apogee, Mach 0.49</dd></div>
+          <div><dt>Recovery</dt><dd>36 in parachute, about 6 m/s landing</dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="trio">
+          <img src="images/rocket-pad.jpg" alt="Rocket on the launch rail at pad 2">
+          <img src="images/rocket-liftoff.jpg" alt="Exhaust trail as the rocket leaves the rail">
+          <img src="images/rocket-pin.jpg" alt="Tripoli Level 1 certification pin held in front of a Colorado School of Mines banner">
+        </div>
+        <figure class="shot nose">
+          <img src="images/nose-cone-cad.jpg" alt="SolidWorks model of the ogive nose cone with integral shoulder">
+          <figcaption>On the pad, liftoff and the Level 1 pin. Below: the nose cone, designed in SolidWorks and printed in one piece.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="tourniquet" aria-labelledby="tq-h">
+    <div class="p-head">
+      <h2 id="tq-h">Tourniquet feedback device</h2>
+      <p>Red Rocks Community College · Team lead, 5 students · Spring 2025</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-text">
+        <p>Most tourniquet failures happen because the user can't tell when it is tight enough. Our clip-on device reads blood flow below the tourniquet and, once flow stops, lights an LED, sounds an alarm and starts a timer for the next level of care.</p>
+        <p>I led the team and the stakeholder work with EMS and military medics, fabricated about 75% of the hardware and wrote about 25% of the software.</p>
+        <dl class="stats">
+          <div><dt>Validation tests</dt><dd>8 of 8 subjects classified correctly</dd></div>
+          <div><dt>Civilian confidence in tourniquet placement</dt><dd>More than doubled with the device</dd></div>
+          <div><dt>Hardware</dt><dd>Pulse-oximeter sensor, Arduino, LED, speaker, timer, 3D-printed enclosure</dd></div>
+        </dl>
+      </div>
+      <figure class="shot">
+        <div class="tq-grid">
+          <img class="drawing" src="images/tourniquet-cad.png" alt="CAD drawing of the electronics box showing timer, LED, speaker port and sensor lead">
+          <img src="images/tourniquet-enclosure.jpg" alt="Printed blue enclosure with timer display and sensor lead">
+          <img src="images/tourniquet-bench.jpg" alt="Arduino, sensor, LED, speaker and timer display running together on the bench">
+        </div>
+        <figcaption>Enclosure design, the printed enclosure, and all subsystems running on the bench.</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>Matthew Walz, Denver, CO</p>
+  <p><a href="mailto:mattjwalz@outlook.com">mattjwalz@outlook.com</a> · <a href="https://www.linkedin.com/in/matthew-j-walz">LinkedIn</a> · <a href="Matthew_Walz_Portfolio.pdf" download>Download PDF portfolio</a></p>
+</footer>
+</body>
+</html>
